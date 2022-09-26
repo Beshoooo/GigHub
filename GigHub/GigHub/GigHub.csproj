@@ -168,6 +168,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\GigsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -181,9 +182,14 @@
     <Compile Include="Migrations\202209261515018_PrepareGigsModel_Table.Designer.cs">
       <DependentUpon>202209261515018_PrepareGigsModel_Table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202209261706460_FillTableTypesWithData.cs" />
+    <Compile Include="Migrations\202209261706460_FillTableTypesWithData.Designer.cs">
+      <DependentUpon>202209261706460_FillTableTypesWithData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContextController.cs" />
+    <Compile Include="Models\GigFormCreate.cs" />
     <Compile Include="Models\Gigs.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -246,12 +252,10 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Gigs\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\ApplicationDbContext\" />
-    <Folder Include="Views\Gigs\" />
-    <Folder Include="Views\Types\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -267,6 +271,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202209261515018_PrepareGigsModel_Table.resx">
       <DependentUpon>202209261515018_PrepareGigsModel_Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209261706460_FillTableTypesWithData.resx">
+      <DependentUpon>202209261706460_FillTableTypesWithData.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
