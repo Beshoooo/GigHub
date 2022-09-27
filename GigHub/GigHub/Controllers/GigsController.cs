@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using GigHub.Models;
+using GigHub.ViewModels;
 using Microsoft.AspNet.Identity;
 
 
@@ -29,6 +30,16 @@ namespace GigHub.Controllers
         [HttpPost]
         public ActionResult Create(GigFormCreate g)
         {
+            //(Validation)For check that comming model data is validate (server-side)
+            if (!ModelState.IsValid)
+            {
+                //Send types data for DropDownList ,
+                //Because value cannot be null in Parameter name: items in SelectList.
+                List<Types> T = DB.type.ToList();
+                ViewBag.types = T;
+
+                return View("Create");//Return to the same page 
+            }
             Gigs gig = new Gigs();
             
             var artist_id = User.Identity.GetUserId();

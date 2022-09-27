@@ -1,4 +1,4 @@
-﻿@model GigHub.Models.GigFormCreate
+﻿@model GigHub.ViewModels.GigFormCreate
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -10,19 +10,38 @@
     <div class="form-group">
         @Html.LabelFor(n => n.Location)
         @Html.TextBoxFor(n=>n.Location, new { @class="form-control"})
+        @Html.ValidationMessageFor(n => n.Location)
     </div>
     <div class="form-group">
         @Html.LabelFor(n => n.Date)
-        @Html.TextBoxFor(n => n.Date, new { @class = "form-control" })
+        <input type="date" class="form-control" name="Date" required>
+        @Html.ValidationMessageFor(n => n.Date)
     </div>
     <div class="form-group">
         @Html.LabelFor(n => n.Time)
-        @Html.TextBoxFor(n => n.Time, new { @class = "form-control" })
+        <input type="time" class="form-control" name="Time" required>
+        @Html.ValidationMessageFor(n => n.Time)
     </div>
     <div class="form-group">
         @Html.LabelFor(n => n.Genre)
         @Html.DropDownListFor(n => n.Genre,new SelectList(ViewBag.types, "Id","Name"),"",new { @class="form-control"})
+        @Html.ValidationMessageFor(n => n.Genre)
     </div>
 
     <button type="submit" class="btn btn-primary">Save</button>
 </form>
+
+
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+
+}
+
+
+
+
+
+
+

@@ -2,6 +2,9 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
+using GigHub.ViewModels;
+
+
 
 namespace GigHub.Models
 {
