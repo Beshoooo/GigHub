@@ -6,10 +6,14 @@
 
 <h2>Add a Gig</h2>
 
-<form method="post">
+@using (Html.BeginForm("Create", "Gigs"))
+{
+    <!--For Validate CSRF attackers-->
+    @Html.AntiForgeryToken()
+
     <div class="form-group">
         @Html.LabelFor(n => n.Location)
-        @Html.TextBoxFor(n=>n.Location, new { @class="form-control"})
+        @Html.TextBoxFor(n => n.Location, new { @class = "form-control" })
         @Html.ValidationMessageFor(n => n.Location)
     </div>
     <div class="form-group">
@@ -24,13 +28,13 @@
     </div>
     <div class="form-group">
         @Html.LabelFor(n => n.Genre)
-        @Html.DropDownListFor(n => n.Genre,new SelectList(ViewBag.types, "Id","Name"),"",new { @class="form-control"})
+        @Html.DropDownListFor(n => n.Genre, new SelectList(ViewBag.types, "Id", "Name"), "", new { @class = "form-control" })
         @Html.ValidationMessageFor(n => n.Genre)
     </div>
 
     <button type="submit" class="btn btn-primary">Save</button>
-</form>
 
+}
 
 
 @section scripts

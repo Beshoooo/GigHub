@@ -28,6 +28,8 @@ namespace GigHub.Controllers
         //This function to save gig data.
         //HttpPost=> Redirect to this action just if you return from Create action by method (post)
         [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]//Check CSRF attackers
         public ActionResult Create(GigFormCreate g)
         {
             //(Validation)For check that comming model data is validate (server-side)
