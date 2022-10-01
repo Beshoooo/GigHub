@@ -10,8 +10,8 @@ namespace GigHub.Models
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public DbSet <Gigs> Gig { get; set; }
-        public DbSet<Types> type { get; set; }
+        public DbSet <Gigs> Gigs { get; set; }
+        public DbSet<Types> types { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

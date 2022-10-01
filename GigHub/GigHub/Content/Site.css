@@ -63,8 +63,9 @@ h6,
 .Create-Form .form-group {margin-bottom: 25px;}
 .Create-Form .form-control {
     font-size: 18px;
-    padding: 20px 15px;
+    padding: 10px 15px;
     border-radius: 10px;
+    height:50px
 }
 
 .Create-Form .btn {
@@ -74,12 +75,6 @@ h6,
 }
 
 .Create-Form .field-validation-error{color:#f00;font-weight:bold;}
-
-
-
-
-
-
 
 
 

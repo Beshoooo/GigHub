@@ -190,6 +190,10 @@
     <Compile Include="Migrations\202209262200242_EditGigsModel.Designer.cs">
       <DependentUpon>202209262200242_EditGigsModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202210011600253_AddNameToApplicationUser.cs" />
+    <Compile Include="Migrations\202210011600253_AddNameToApplicationUser.Designer.cs">
+      <DependentUpon>202210011600253_AddNameToApplicationUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContextController.cs" />
@@ -283,6 +287,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202209262200242_EditGigsModel.resx">
       <DependentUpon>202209262200242_EditGigsModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202210011600253_AddNameToApplicationUser.resx">
+      <DependentUpon>202210011600253_AddNameToApplicationUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

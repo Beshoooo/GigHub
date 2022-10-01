@@ -20,7 +20,7 @@ namespace GigHub.Controllers
         [Authorize]
         public ActionResult Create()
         {
-            List<Types> T = DB.type.ToList();
+            List<Types> T = DB.types.ToList();
             ViewBag.types = T;
             return View();
         }
@@ -37,7 +37,7 @@ namespace GigHub.Controllers
             {
                 //Send types data for DropDownList ,
                 //Because value cannot be null in Parameter name: items in SelectList.
-                List<Types> T = DB.type.ToList();
+                List<Types> T = DB.types.ToList();
                 ViewBag.types = T;
 
                 return View("Create");//Return to the same page 
@@ -57,7 +57,7 @@ namespace GigHub.Controllers
             gig.Datatime = Convert.ToDateTime(g.Date +" "+ g.Time);
             gig.GenreId = g.Genre;
 
-            DB.Gig.Add(gig);
+            DB.Gigs.Add(gig);
             DB.SaveChanges();
 
             return RedirectToAction("Index","Home");
