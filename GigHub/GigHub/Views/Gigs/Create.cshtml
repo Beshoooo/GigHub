@@ -6,7 +6,7 @@
 
 <h2>Add a Gig</h2>
 
-@using (Html.BeginForm("Create", "Gigs"))
+@using (Html.BeginForm("Create", "Gigs",FormMethod.Post,new { @class="Create-Form"}))
 {
     <!--For Validate CSRF attackers-->
     @Html.AntiForgeryToken()
