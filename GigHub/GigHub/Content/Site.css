@@ -18,7 +18,7 @@
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
-textarea {max-width: 280px;}
+textarea {max-width: 350px;}
 
 
 /*Bootstrab override*/
@@ -72,4 +72,17 @@ h6,
     font-size: 18px;
     border-radius: 9px;
 }
+
+.Create-Form .field-validation-error{color:#f00;font-weight:bold;}
+
+
+
+
+
+
+
+
+
+
+
 
