@@ -13,6 +13,7 @@ namespace GigHub.ViewModels
         //Validateion for Date string
         public override bool IsValid(object value)
         {
+
             DateTime date;
             var isval = DateTime.TryParseExact(Convert.ToString(value),
                 "yyyy-mm-d",

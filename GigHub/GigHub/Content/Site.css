@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 90px;
     padding-bottom: 20px;
     font-size: 17px;
 }
@@ -67,17 +67,57 @@ h6,
     border-radius: 10px;
     height:50px
 }
-
 .Create-Form .btn {
     padding: 7px 24px;
     font-size: 18px;
     border-radius: 9px;
 }
-
 .Create-Form .field-validation-error{color:#f00;font-weight:bold;}
+/*End Create Form Edit*/
 
+/*Home Page*/
+.comming_gigs{
+    list-style:none;
+}
+.comming_gigs > li{
+    position:relative;
+    margin-bottom:20px;
+}
+.comming_gigs > li .date{
+    background-color:#f00;
+    width:60px;
+    color:#fff;
+    text-align:center;
+    border-radius:10px 10px 0 0;
 
+}
+.comming_gigs > li .date .month {
+    font-weight:bold;
+    text-transform:uppercase;
+    font-size:15px;
+    padding:2px 6px;
+    border-bottom:1px solid #808080;
+}
+.comming_gigs > li .date .day {
+    background-color:#fbfbfb;
+    color:#808080;
+    font-size:20px;
+    padding:3px 7px;
+}
 
+.comming_gigs > li .details{
+    position:absolute;
+    top:0;
+    left:80px;
+}
+
+.comming_gigs > li .details .artist{
+    display:block;
+    margin-bottom:5px;
+    font-weight:bold;
+}
+.comming_gigs > li .details .genre{font-size:15px}
+/*End Home Page*/
 
 
 

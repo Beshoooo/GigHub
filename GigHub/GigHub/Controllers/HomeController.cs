@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
 using GigHub.Models;
+using System.Globalization;
+using System.Threading;
 
 
 namespace GigHub.Controllers
@@ -14,8 +16,13 @@ namespace GigHub.Controllers
         ApplicationDbContext DB = new ApplicationDbContext();
         public ActionResult Index()
         {
-            //using Eager loading include() for loading artist var
-            var commingGigs = DB.Gigs.Include(n => n.Artist).Where(n => n.Datatime > DateTime.Now);
+        #region Setting Culture To English To Make Months English.
+            //make Culture Set To English
+            Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en");
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("en");
+        #endregion
+            //using Eager loading include() for loading artist var and types
+            var commingGigs = DB.Gigs.Include(n => n.Artist).Include(n=>n.Genre).Where(n => n.Datatime > DateTime.Now);
             return View(commingGigs);
         }
 
