@@ -109,6 +109,7 @@ h6,
     position:absolute;
     top:0;
     left:80px;
+    width: 135px;
 }
 
 .comming_gigs > li .details .artist{
