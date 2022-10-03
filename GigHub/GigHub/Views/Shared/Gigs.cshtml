@@ -1,0 +1,81 @@
+﻿@model GigHub.ViewModels.GigsViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h2>@ViewBag.Heading</h2>
+<ul class="comming_gigs">
+    @foreach (var gig in Model.commingGigs)
+    {
+        <li>
+            <div class="date">
+                <div class="month">
+                    @gig.Datatime.ToString("MMM")
+                </div>
+                <div class="day">
+                    @gig.Datatime.ToString("d ")
+                </div>
+            </div>
+            <div class="details">
+                <div class="artist">
+                    <span>@gig.Artist.Name</span>
+
+                    <!--To Show button to user only and hidding from anyone else-->
+                    @if (Model.ShowActions)
+                    {
+                        <button class="btn btn-link btn-sm js-toggle-follow pull-right " data-user-id="@gig.Artist.Id">Follow</button>
+                    }
+                </div>
+                <div class="genre clear">
+                    <span>@gig.Genre.Name</span>
+
+                    <!--To Show button to user only-->
+                    @if (Model.ShowActions)
+                    {
+                        <button data-gig-id="@gig.Id" class="btn btn-default btn-sm pull-right js-toggle-attendance ">Going ?</button>
+                    }
+                </div>
+            </div>
+
+        </li>
+
+    }
+</ul>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $(".js-toggle-attendance").click(function (e) {
+                var button = $(e.target);
+                $.post("/api/attendance/", { gigId: button.attr("data-gig-id") })
+                .done(function () {
+                    button.removeClass("btn-default").addClass("btn-info").text("Going");
+                })
+                .fail(function () {
+                    alert("Something is faild!");
+                });
+                
+            });
+
+            $(".js-toggle-follow").click(function (e) {
+                var button = $(e.target);
+                $.post("/api/followings/", { FolloweeId: button.attr("data-user-id") })
+                .done(function () {
+                    button.text("Following");
+                })
+                .fail(function () {
+                    alert("Something is faild!");
+                });
+
+            });
+
+
+
+
+
+        });
+    
+    </script>
+}

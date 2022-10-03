@@ -13,6 +13,9 @@ namespace GigHub.Models
         public DbSet <Gigs> Gigs { get; set; }
         public DbSet<Types> types { get; set; }
         public DbSet<Attendance> attendance { get; set; }
+        public DbSet<Followers> followers { get; set; }
+
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

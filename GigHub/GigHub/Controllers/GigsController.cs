@@ -6,8 +6,9 @@ using System.Web.Mvc;
 using GigHub.Models;
 using GigHub.ViewModels;
 using Microsoft.AspNet.Identity;
-
-
+using System.Data.Entity;
+using System.Threading;
+using System.Globalization;
 
 namespace GigHub.Controllers
 {
@@ -62,6 +63,38 @@ namespace GigHub.Controllers
 
             return RedirectToAction("Index","Home");
         }
+
+        [Authorize]
+        public ActionResult Attending()
+        {
+            #region Setting Culture To English To Make Months English.
+            //make Culture Set To English
+            Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en");
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("en");
+            #endregion
+
+            string UserId = User.Identity.GetUserId();
+
+            var gigs = DB.attendance
+                .Where(n => n.UserId == UserId)
+                .Select(n=>n.Gig)
+                .Include(n=>n.Artist)
+                .Include(n=>n.Genre)
+                .ToList();
+
+            var commingGigs = new GigsViewModel
+            {
+                commingGigs = gigs,
+                ShowActions = User.Identity.IsAuthenticated
+            };
+            ViewBag.Heading = "Gigs I'm Attending";
+            return View("Gigs",commingGigs);
+
+        }
+
+
+
+
 
     }
 

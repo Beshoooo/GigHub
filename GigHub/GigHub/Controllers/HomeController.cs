@@ -5,8 +5,10 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
 using GigHub.Models;
+using GigHub.ViewModels;
 using System.Globalization;
 using System.Threading;
+using Microsoft.AspNet.Identity;
 
 
 namespace GigHub.Controllers
@@ -23,7 +25,17 @@ namespace GigHub.Controllers
         #endregion
             //using Eager loading include() for loading artist var and types
             var commingGigs = DB.Gigs.Include(n => n.Artist).Include(n=>n.Genre).Where(n => n.Datatime > DateTime.Now);
-            return View(commingGigs);
+
+            //this obj for control show button in view to prevent any one to use unless register or login users.
+            //by checking authuntication
+            var ViewModel = new GigsViewModel
+            {
+                commingGigs = commingGigs,
+                ShowActions = User.Identity.IsAuthenticated
+            };
+            ViewBag.Heading = "Upcomming Gigs";
+
+            return View("Gigs",ViewModel);
         }
 
         public ActionResult About()

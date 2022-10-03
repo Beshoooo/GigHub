@@ -3,6 +3,7 @@
     padding-bottom: 20px;
     font-size: 17px;
 }
+.clear {clear:both;}
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
@@ -78,6 +79,7 @@ h6,
 /*Home Page*/
 .comming_gigs{
     list-style:none;
+    margin-top:50px;
 }
 .comming_gigs > li{
     position:relative;
@@ -109,7 +111,6 @@ h6,
     position:absolute;
     top:0;
     left:80px;
-    width: 135px;
 }
 
 .comming_gigs > li .details .artist{
@@ -117,8 +118,9 @@ h6,
     margin-bottom:5px;
     font-weight:bold;
 }
-.comming_gigs > li .details .genre{font-size:15px}
+.comming_gigs > li .details .genre{font-size:15px;overflow: hidden;}
 /*End Home Page*/
 
+/*Attending Page*/
 
-
+/*End Attending Page*/
