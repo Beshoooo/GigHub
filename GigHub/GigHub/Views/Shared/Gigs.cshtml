@@ -24,16 +24,48 @@
                     <!--To Show button to user only and hidding from anyone else-->
                     @if (Model.ShowActions)
                     {
-                        <button class="btn btn-link btn-sm js-toggle-follow pull-right " data-user-id="@gig.Artist.Id">Follow</button>
+                        int n = 0;
+                        foreach (var item in ViewBag.Followee_Id)
+                        {
+                            if (item == @gig.ArtistId)
+                            {
+                                <button class="btn btn-link btn-sm js-toggle-follow pull-right toogle-Follow" data-user-id="@gig.ArtistId">Following</button>
+                                n = 1;
+                                break;
+                            }
+                        }
+
+                        if (n == 0)
+                        {
+                            if (User.Identity.Name != gig.Artist.Email)
+                            {<button class="btn btn-link btn-sm js-toggle-follow pull-right " data-user-id="@gig.ArtistId">Follow</button>}
+                        }
                     }
+                    
+
                 </div>
                 <div class="genre clear">
                     <span>@gig.Genre.Name</span>
 
-                    <!--To Show button to user only-->
+                    <!--To show button to user only "authenticated"-->
                     @if (Model.ShowActions)
                     {
-                        <button data-gig-id="@gig.Id" class="btn btn-default btn-sm pull-right js-toggle-attendance ">Going ?</button>
+                        int x = 0;
+                        foreach (var item in ViewBag.Gigs_Id)
+                        {
+                            if (item == @gig.Id)
+                            {
+                                <button data-gig-id="@gig.Id" class="btn btn-info btn-sm pull-right js-toggle-attendance ">Going</button>
+                                x = 1;
+                                break;
+                            }
+                        }
+
+                        if (x == 0)
+                        {<button data-gig-id="@gig.Id" class="btn btn-default btn-sm pull-right js-toggle-attendance ">Going ?</button>}
+
+
+
                     }
                 </div>
             </div>
@@ -49,9 +81,16 @@
         $(document).ready(function () {
             $(".js-toggle-attendance").click(function (e) {
                 var button = $(e.target);
+                
                 $.post("/api/attendance/", { gigId: button.attr("data-gig-id") })
                 .done(function () {
-                    button.removeClass("btn-default").addClass("btn-info").text("Going");
+                    if (button.hasClass("btn-default")) {
+                        button.removeClass("btn-default").addClass("btn-info").text("Going");
+                    }
+                    else
+                    {
+                        button.removeClass("btn-info").addClass("btn-default").text("Going ?");
+                    }
                 })
                 .fail(function () {
                     alert("Something is faild!");
@@ -59,11 +98,19 @@
                 
             });
 
+
+
+
+
             $(".js-toggle-follow").click(function (e) {
                 var button = $(e.target);
+
                 $.post("/api/followings/", { FolloweeId: button.attr("data-user-id") })
                 .done(function () {
-                    button.text("Following");
+                    if (button.hasClass("toogle-Follow"))
+                    { button.text("Follow").removeClass("toogle-Follow").addClass("toogle-Following"); }
+                    else
+                    { button.text("Following").removeClass("toogle-Following").addClass("toogle-Follow"); }
                 })
                 .fail(function () {
                     alert("Something is faild!");

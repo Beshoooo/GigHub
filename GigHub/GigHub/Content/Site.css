@@ -77,7 +77,7 @@ h6,
 /*End Create Form Edit*/
 
 /*Home Page*/
-.comming_gigs{
+ul{
     list-style:none;
     margin-top:50px;
 }
@@ -121,6 +121,22 @@ h6,
 .comming_gigs > li .details .genre{font-size:15px;overflow: hidden;}
 /*End Home Page*/
 
-/*Attending Page*/
+/*Following Page*/
 
-/*End Attending Page*/
+.Following div 
+{
+    margin-bottom:50px;
+}
+.Following div img
+{
+    float:left;
+    width:100px;
+    height:100px;
+}
+.Following div li
+{
+    font-size: 25px;
+    font-weight: bold;
+    padding-top: 32px;
+}
+/*End Following Page*/

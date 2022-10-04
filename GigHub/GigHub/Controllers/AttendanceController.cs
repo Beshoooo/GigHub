@@ -25,16 +25,23 @@ namespace GigHub.Controllers
             var Gig_check = DB.Gigs.Any(n => n.Id == dto.gigId);
 
             //check duplicating to prevent it.
+            //remove attendace
             var Exists = DB.attendance.Any(n => n.GigId == dto.gigId && n.UserId == userID);
             if (Exists)
             {
-                return BadRequest("The attendance already exist.");
+
+                var attend = DB.attendance.Where(n => n.GigId == dto.gigId && n.UserId == userID).FirstOrDefault();
+                
+                DB.attendance.Remove(attend);
+                DB.SaveChanges();
+                return Ok();
             }
             
             else if (!Gig_check)
             {
                 return BadRequest("The gig not in database.");
             }
+            //add attendace
             else
             {
                 var attend = new Attendance() { GigId = dto.gigId, UserId = userID };

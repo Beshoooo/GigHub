@@ -24,8 +24,13 @@ namespace GigHub.Controllers
             bool Exist = DB.followers.Any(n => n.FolloweeID == dto.FolloweeId && n.FollowerID == UserID);
             if (Exist)
             {
-                return BadRequest("You already Following.");
+                var follow = DB.followers.Where(n => n.FolloweeID == dto.FolloweeId && n.FollowerID == UserID).FirstOrDefault();
+
+                DB.followers.Remove(follow);
+                DB.SaveChanges();
+                return Ok();
             }
+
             else if (UserID == dto.FolloweeId)
             {
                 //you can't follow yourself.

@@ -34,6 +34,31 @@ namespace GigHub.Controllers
                 ShowActions = User.Identity.IsAuthenticated
             };
             ViewBag.Heading = "Upcomming Gigs";
+            
+
+            var UserID = User.Identity.GetUserId();
+
+            #region Get all gigs_ids that i'm attending 
+            //Get all gigs_ids that i'm attending and send it to appear in page when start
+            var att_list = DB.attendance.Where(n => n.UserId == UserID).ToList();
+            List<int> list_Gigs_Id = new List<int>() ;
+            foreach (var item in att_list)
+            {
+                list_Gigs_Id.Add(item.GigId);
+            }
+            ViewBag.Gigs_Id = list_Gigs_Id;
+            #endregion
+
+            #region Get all followee_ids that i'm follow them 
+            //Get all followee_ids that i'm follow them  and send it to appear in page when start
+            var followees_list = DB.followers.Where(n => n.FollowerID == UserID).Select(n=>n.FolloweeID).ToList();
+            List<string> list_Followee_Id = new List<string>();
+            foreach (var item in followees_list)
+            {
+                list_Followee_Id.Add(item);
+            }
+            ViewBag.Followee_Id = list_Followee_Id;
+            #endregion
 
             return View("Gigs",ViewModel);
         }

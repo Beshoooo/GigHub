@@ -224,6 +224,7 @@
     <Compile Include="Models\ApplicationDbContextController.cs" />
     <Compile Include="Models\Attendance.cs" />
     <Compile Include="Models\Followers.cs" />
+    <Compile Include="ViewModels\FollowingViewModel.cs" />
     <Compile Include="ViewModels\GigFormCreate.cs" />
     <Compile Include="Models\Gigs.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -236,6 +237,10 @@
     <Compile Include="ViewModels\ValidTime.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\aspnet-GigHub-20220926042256.mdf" />
+    <Content Include="App_Data\aspnet-GigHub-20220926042256_log.ldf">
+      <DependentUpon>aspnet-GigHub-20220926042256.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -294,9 +299,10 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Gigs\Create.cshtml" />
+    <Content Include="Views\Gigs\Following.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="Content\Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

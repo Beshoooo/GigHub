@@ -1,0 +1,30 @@
+﻿@model GigHub.ViewModels.FollowingViewModel
+@{
+    ViewBag.Title = "Following";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Heading</h2>
+
+
+<ul class="Following ">
+    @if (Model.Showaction)
+    {
+        foreach (var item in Model.Followees_list)
+        {
+            <div>
+                <img src="~/Content/Images/profile.png"/>
+                <li>
+                    @item
+                </li>
+            </div>
+        }
+    }
+
+
+</ul>
+
+
+
+
+
