@@ -1,8 +1,8 @@
 # GigHub 
 - Simple social networking website for live music lovers
-- musicians can sign up and list their upcomming gigs
-- musicians can fullow lover artist
-- they can add favorit gigs to calendar
+- musicians can sign up and list their upcoming gigs
+- musicians can follow lover artist
+- they can add favorite gigs to calendar
 
 ## Structure
 * ASP.NET
